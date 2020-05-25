@@ -46,3 +46,14 @@ function driversLicence(passedTest){
 console.log(true);
 
 
+/////////////////////////////////////////////////////////////////////////////
+/// Blocks and IIFEs
+
+//block
+{
+    const a=1;
+    let b = 2;
+
+}
+
+//console.log(a+b); //error
