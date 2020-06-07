@@ -298,37 +298,78 @@
 // /////////////////////////////////
 // // Lecture: Spread operator (...<arr>/<nodelist>)
 
-function addFourAges (a, b, c, d) {
-    return a + b + c + d;
+// function addFourAges (a, b, c, d) {
+//     return a + b + c + d;
+// }
+// var sum1 = addFourAges(18, 30, 12, 21);
+// console.log(sum1);
+
+// //ES5
+
+// var ages = [18, 30, 12, 21];
+// /* this method .apply is used to pass array of arguments to the function */
+// var sum2 = addFourAges.apply(null, ages);
+// console.log(sum2);
+
+// //ES6
+// /* ... this operatoer Spread the array 
+//     if array get bigger than the no of arguments -- not matter 
+// */
+// const sum3 = addFourAges(...ages);
+// console.log(sum3);
+
+// const familySmith = ['John', 'Jane', 'Mark'];
+// const familyMiller = ['Mary', 'Bob', 'Ann'];
+// const bigFamily = [...familySmith, 'Lily', ...familyMiller];
+// console.log(bigFamily);
+
+// const h = document.querySelector('h1');
+// const boxes = document.querySelectorAll('.box');
+// const all = [h, ...boxes];
+
+// /* node list to array  = Array.from(<nodeList>) */ 
+// Array.from(all).forEach(cur => cur.style.color = 'red');
+
+
+/////////////////////////////////
+// Lecture: Rest parameters
+
+// function isFullAge5() {
+//     //argument  == this
+//     //console.log(arguments);
+
+//     //obj to array conversion  (get copy )
+//     var argsArr = Array.prototype.slice.call(arguments);
+
+//     argsArr.forEach(function(cur) {
+//         //console.log((2016 - cur) >= 18);
+//     })
+// }
+
+function isFullAge5(limit) {
+    //argument  == this
+    //console.log(arguments);
+
+    //obj to array conversion  (get copy )
+    var argsArr = Array.prototype.slice.call(arguments,1);//coppy starting possion no 1
+
+    //console.log(argsArr);
+
+    argsArr.forEach(function(cur) {
+        //console.log((2016 - cur) >= limit);
+    })
 }
-var sum1 = addFourAges(18, 30, 12, 21);
-console.log(sum1);
 
-//ES5
+isFullAge5(18,1990,1999,1965);
 
-var ages = [18, 30, 12, 21];
-/* this method .apply is used to pass array of arguments to the function */
-var sum2 = addFourAges.apply(null, ages);
-console.log(sum2);
 
 //ES6
-/* ... this operatoer Spread the array 
-    if array get bigger than the no of arguments -- not matter 
-*/
-const sum3 = addFourAges(...ages);
-console.log(sum3);
+function isFullAge6(limit,...years) {
+    years.forEach(cur => console.log( (2016 - cur) >= limit));
+}
 
-const familySmith = ['John', 'Jane', 'Mark'];
-const familyMiller = ['Mary', 'Bob', 'Ann'];
-const bigFamily = [...familySmith, 'Lily', ...familyMiller];
-console.log(bigFamily);
+isFullAge6(18,1990,1999,1965);
 
-const h = document.querySelector('h1');
-const boxes = document.querySelectorAll('.box');
-const all = [h, ...boxes];
-
-/* node list to array  = Array.from(<nodeList>) */ 
-Array.from(all).forEach(cur => cur.style.color = 'red');
 
 
 
