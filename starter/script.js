@@ -346,31 +346,57 @@
 //     })
 // }
 
-function isFullAge5(limit) {
-    //argument  == this
-    //console.log(arguments);
+// function isFullAge5(limit) {
+//     //argument  == this
+//     //console.log(arguments);
 
-    //obj to array conversion  (get copy )
-    var argsArr = Array.prototype.slice.call(arguments,1);//coppy starting possion no 1
+//     //obj to array conversion  (get copy )
+//     var argsArr = Array.prototype.slice.call(arguments,1);//coppy starting possion no 1
 
-    //console.log(argsArr);
+//     //console.log(argsArr);
 
-    argsArr.forEach(function(cur) {
-        //console.log((2016 - cur) >= limit);
-    })
+//     argsArr.forEach(function(cur) {
+//         //console.log((2016 - cur) >= limit);
+//     })
+// }
+
+// isFullAge5(18,1990,1999,1965);
+
+
+// //ES6
+// function isFullAge6(limit,...years) {
+//     years.forEach(cur => console.log( (2016 - cur) >= limit));
+// }
+
+//isFullAge6(18,1990,1999,1965);
+
+
+
+/////////////////////////////////
+// Lecture: Default parameters
+
+function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+    
+    lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+    nationality === undefined ? nationality = 'american' : nationality = nationality;
+    
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
 }
 
-isFullAge5(18,1990,1999,1965);
+var john = new SmithPerson('John', 1990);
+var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
 
-
-//ES6
-function isFullAge6(limit,...years) {
-    years.forEach(cur => console.log( (2016 - cur) >= limit));
+function SmithPerson6(firstName, yearOfBirth, lastName = 'Smith', nationality = 'american') {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
 }
 
-isFullAge6(18,1990,1999,1965);
-
-
-
+var john = new SmithPerson6('John', 1990);
+var emily = new SmithPerson6('Emily', 1983, 'Diaz', 'spanish');
 
 
