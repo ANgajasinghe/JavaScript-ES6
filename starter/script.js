@@ -399,4 +399,58 @@ function SmithPerson6(firstName, yearOfBirth, lastName = 'Smith', nationality = 
 var john = new SmithPerson6('John', 1990);
 var emily = new SmithPerson6('Emily', 1983, 'Diaz', 'spanish');
 
+/////////////////////////////////
+// Lecture: Maps (Data Structure )
+/*
 
+The Map object holds key-value pairs and remembers the original insertion order of the keys. 
+Any value (both objects and primitive values) may be used as either a key or a value.
+
+*/
+
+const question = new Map();
+question.set('question','waht is your first name ? ');
+question.set(1,'Akalanka Nayanajith');
+question.set(2,'Nayanajith Gajasinghe');
+question.set(3,'Saman Kuamara');
+question.set('correct',1);
+question.set(true , 'correct ans');
+question.set(false , 'Warong please look check your ID');
+
+/*
+    this is a question map : 
+    how this look like 
+    Map(7) {"question" => "waht is your first name ? ", 1 => "Akalanka Nayanajith", 2 => "Nayanajith Gajasinghe", 3 => "Saman Kuamara", "correct" => 1, …}
+    [[Entries]]
+    0: {"question" => "waht is your first name ? "}
+    1: {1 => "Akalanka Nayanajith"}
+    2: {2 => "Nayanajith Gajasinghe"}
+    3: {3 => "Saman Kuamara"}
+    4: {"correct" => 1}
+    5: {true => "correct ans"}
+    6: {false => "Warong please look check your ID"}
+    size: (...)__proto__: Map
+
+
+*/
+
+console.log(question.get('question'));
+console.log(question.size);
+
+if(question.has(3)) {
+    question.delete(3);
+}
+
+//question.clear();
+
+//question.forEach((value, key) => console.log(`This is ${key}, and it's set to ${value}`));
+
+//distructuring 
+for (let [key, value] of question.entries()) {
+    if (typeof(key) === 'number') {
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
+
+const ans = parseInt(prompt('Write the correct answer'));
+console.log(question.get(ans === question.get('correct')));
