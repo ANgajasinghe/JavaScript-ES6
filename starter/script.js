@@ -375,29 +375,29 @@
 /////////////////////////////////
 // Lecture: Default parameters
 
-function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+// function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
     
-    lastName === undefined ? lastName = 'Smith' : lastName = lastName;
-    nationality === undefined ? nationality = 'american' : nationality = nationality;
+//     lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+//     nationality === undefined ? nationality = 'american' : nationality = nationality;
     
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.yearOfBirth = yearOfBirth;
-    this.nationality = nationality;
-}
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.yearOfBirth = yearOfBirth;
+//     this.nationality = nationality;
+// }
 
-var john = new SmithPerson('John', 1990);
-var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
+// var john = new SmithPerson('John', 1990);
+// var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
 
-function SmithPerson6(firstName, yearOfBirth, lastName = 'Smith', nationality = 'american') {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.yearOfBirth = yearOfBirth;
-    this.nationality = nationality;
-}
+// function SmithPerson6(firstName, yearOfBirth, lastName = 'Smith', nationality = 'american') {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.yearOfBirth = yearOfBirth;
+//     this.nationality = nationality;
+// }
 
-var john = new SmithPerson6('John', 1990);
-var emily = new SmithPerson6('Emily', 1983, 'Diaz', 'spanish');
+// var john = new SmithPerson6('John', 1990);
+// var emily = new SmithPerson6('Emily', 1983, 'Diaz', 'spanish');
 
 /////////////////////////////////
 // Lecture: Maps (Data Structure )
@@ -408,14 +408,14 @@ Any value (both objects and primitive values) may be used as either a key or a v
 
 */
 
-const question = new Map();
-question.set('question','waht is your first name ? ');
-question.set(1,'Akalanka Nayanajith');
-question.set(2,'Nayanajith Gajasinghe');
-question.set(3,'Saman Kuamara');
-question.set('correct',1);
-question.set(true , 'correct ans');
-question.set(false , 'Warong please look check your ID');
+// const question = new Map();
+// question.set('question','waht is your first name ? ');
+// question.set(1,'Akalanka Nayanajith');
+// question.set(2,'Nayanajith Gajasinghe');
+// question.set(3,'Saman Kuamara');
+// question.set('correct',1);
+// question.set(true , 'correct ans');
+// question.set(false , 'Warong please look check your ID');
 
 /*
     this is a question map : 
@@ -434,23 +434,71 @@ question.set(false , 'Warong please look check your ID');
 
 */
 
-console.log(question.get('question'));
-console.log(question.size);
+// console.log(question.get('question'));
+// console.log(question.size);
 
-if(question.has(3)) {
-    question.delete(3);
+// if(question.has(3)) {
+//     question.delete(3);
+// }
+
+// //question.clear();
+
+// //question.forEach((value, key) => console.log(`This is ${key}, and it's set to ${value}`));
+
+// //distructuring 
+// for (let [key, value] of question.entries()) {
+//     if (typeof(key) === 'number') {
+//         console.log(`Answer ${key}: ${value}`);
+//     }
+// }
+
+// const ans = parseInt(prompt('Write the correct answer'));
+// console.log(question.get(ans === question.get('correct')));
+
+
+/////////////////////////////////
+// Lecture: Classes
+
+/* 
+    function constuctor in ES5 ;
+*/
+//ES5
+var Person5 = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
 }
 
-//question.clear();
 
-//question.forEach((value, key) => console.log(`This is ${key}, and it's set to ${value}`));
+Person5.prototype.calculateAge = function() {
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+}
 
-//distructuring 
-for (let [key, value] of question.entries()) {
-    if (typeof(key) === 'number') {
-        console.log(`Answer ${key}: ${value}`);
+var john5 = new Person5('John', 1990, 'teacher');
+
+john5.calculateAge();
+
+class Person6 {
+    constructor(name , yearOfBirth , job){
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job; 
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+
+    static greeting() {
+        console.log('Hey there!');
     }
 }
 
-const ans = parseInt(prompt('Write the correct answer'));
-console.log(question.get(ans === question.get('correct')));
+const john6 = new Person6('John', 1998, 'teacher');
+john6.calculateAge();
+Person6.greeting();
+
+/////////////////////////////////
+// Lecture: Classes and subclasses
