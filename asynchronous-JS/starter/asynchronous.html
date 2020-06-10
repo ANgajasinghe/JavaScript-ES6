@@ -105,32 +105,48 @@
             });
          };
 
-        // alwase have a argument of return data 
-         getID.then(IDs => {
+        // // alwase have a argument of return data 
+        //  getID.then(IDs => {
             
-            // getRecipe(IDs[2]).then( recipe =>{
-            //     console.log(recipe);
-            // });
-            /* We can do this as well But this is not a better way 
+        //     // getRecipe(IDs[2]).then( recipe =>{
+        //     //     console.log(recipe);
+        //     // });
+        //     /* We can do this as well But this is not a better way 
             
-                SOLUTION : chaining -beauty of Promises.
+        //         SOLUTION : chaining -beauty of Promises.
 
-            */
-            return getRecipe(IDs[2])
+        //     */
+        //     return getRecipe(IDs[2])
            
 
-         })//==== chaining =====
-         .then( recipe =>{
+        //  })//==== chaining =====
+        //  .then( recipe =>{
               
-               return getPublisher(recipe.publisher)
+        //        return getPublisher(recipe.publisher)
                
-         }).then(publisher =>{
-                console.log(publisher);
-         }).catch(error =>{
-             console.log('Error!!');
-         });
+        //  }).then(publisher =>{
+        //         console.log(publisher);
+        //  }).catch(error =>{
+        //      console.log('Error!!');
+        //  });
 
+        //============================== AsyncAwait - ES8 2017================
 
+            // run in the background 
+            // await can only use in async function 
+        async function getRecipeAW(){
+
+            const IDs = await getID;// calling promise function 
+            const recipe = await getRecipe(IDs[2]);
+            const publisher = await getPublisher(recipe.publisher);
+
+            console.log(publisher);
+            return recipe;
+
+        }
+        getRecipeAW().then(result => {
+            console.log(result);
+        });
 
 
     </script>
