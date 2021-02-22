@@ -1,0 +1,11 @@
+# JavaScript ES6
+- Variable declaration
+- Blocks and IIFEs
+- Strings
+- Arrow functions
+- Destruction
+- Array
+- The spread operators
+- Rest and default parameters
+- Maps
+- Class and Subclasses
